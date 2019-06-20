@@ -1,8 +1,12 @@
 package com.example.demo.controller;
 
+import com.google.common.collect.Maps;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * .
@@ -15,8 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public Object createUser(){
+	public Object createUser() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("name", "zhangsan");
 
-		return "success";
+//		Map<String, Object> map = Maps.newHashMap();
+//		map.put("name", "name1");
+		return jsonObject;
 	}
 }
