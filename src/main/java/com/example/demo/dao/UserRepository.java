@@ -1,7 +1,6 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.User;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @since 19-6-17
  */
 @Repository
-public interface UserRepository extends CrudRepository<User, String> {
+public interface UserRepository extends BaseRepository<User> {
 
 
 }

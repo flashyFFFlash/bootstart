@@ -1,6 +1,7 @@
 package com.example.demo.core.rest;
 
 import com.google.common.base.Stopwatch;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -19,9 +20,8 @@ import java.util.concurrent.TimeUnit;
  */
 @Aspect
 @Component
+@Slf4j
 public class RestService {
-	private final Logger log = LoggerFactory.getLogger(RestService.class);
-
 	/**
 	 * 请求告警的时间(ms).
 	 */
@@ -47,11 +47,11 @@ public class RestService {
 			Signature signature = joinPoint.getSignature();
 
 			if (cost > WARNTIME) {
-				this.log.warn("{}.{} cost time: {} ms", signature.getDeclaringTypeName(), signature.getName(), cost);
+				log.warn("{}.{} cost time: {} ms", signature.getDeclaringTypeName(), signature.getName(), cost);
 			}
-			this.log.info("{}.{} cost time: {} ms", signature.getDeclaringTypeName(), signature.getName(), cost);
+			log.info("{}.{} cost time: {} ms", signature.getDeclaringTypeName(), signature.getName(), cost);
 		} catch (Throwable throwable) {
-			this.log.error(throwable.getLocalizedMessage(), throwable);
+			log.error(throwable.getLocalizedMessage(), throwable);
 		}
 		return result;
 	}
