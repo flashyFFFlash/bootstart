@@ -7,12 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-/**
- * .
- *
- * @author gxj
- * @since 19-6-17
- */
 @Service
 public class UserService {
 
@@ -23,7 +17,7 @@ public class UserService {
 	public void createUser(){
 		User user = new User();
 		user.setId(UUID.randomUUID().toString());
-		user.setName("hahha");
+		user.setUsername("haha");
 		this.userRepository.save(user);
 	}
 

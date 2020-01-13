@@ -12,12 +12,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * .
- *
- * @author gxj
- * @since 19-6-20
- */
 @Aspect
 @Component
 @Slf4j
