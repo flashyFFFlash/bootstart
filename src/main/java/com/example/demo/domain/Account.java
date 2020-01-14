@@ -9,10 +9,8 @@ import javax.persistence.*;
 @Entity
 @Data
 @Accessors(chain = true)
-public class Account {
+public class Account extends BaseDomainObject {
 
-	@Id
-	private String id;
 	private String loginId;
 	private String password;
 	private Status status;

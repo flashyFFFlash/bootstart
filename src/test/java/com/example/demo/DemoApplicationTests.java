@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.domain.User;
 import com.example.demo.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +17,7 @@ public class DemoApplicationTests {
 
     @Test
     public void contextLoads() {
-        this.userService.createUser();
+        this.userService.create(new User());
     }
 
 }
