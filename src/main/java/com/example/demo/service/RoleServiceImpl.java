@@ -14,6 +14,6 @@ public class RoleServiceImpl implements RoleService{
 
 	@Override
 	public BaseRepository<Role> repository() {
-		return this.repository();
+		return this.roleRepository;
 	}
 }

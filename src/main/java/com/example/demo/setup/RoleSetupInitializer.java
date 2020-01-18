@@ -2,8 +2,12 @@ package com.example.demo.setup;
 
 import com.example.demo.domain.Role;
 import com.example.demo.service.RoleService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Slf4j
+@Component
 public class RoleSetupInitializer extends Initializer {
 
 	@Autowired
@@ -22,6 +26,7 @@ public class RoleSetupInitializer extends Initializer {
 			adminRole.setName(name);
 			adminRole.setDesc(desc);
 			this.roleService.create(adminRole);
+			log.info("role create successfully:【{}, {}】", code, name);
 		}
 	}
 }

@@ -20,4 +20,9 @@ public class UserServiceImpl implements UserService {
 	public BaseRepository<User> repository() {
 		return this.userRepository;
 	}
+
+	@Override
+	public User findUserByUsername(String username) {
+		return this.userRepository.findUserByUsername(username);
+	}
 }
