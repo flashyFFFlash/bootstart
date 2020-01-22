@@ -18,6 +18,12 @@ public class ServiceResult {
 		this.description = description;
 	}
 
+	public ServiceResult(int code, String description, Object result) {
+		this.code = code;
+		this.description = description;
+		this.result = result;
+	}
+
 	public ServiceResult(int code, Object result) {
 		this.code = code;
 		this.result = result;
