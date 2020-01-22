@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import com.example.demo.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -27,10 +28,11 @@ public class User extends BaseDomainObject {
 	@Column(nullable = false, length = 20)
 	private String username;
 	private String nickname;
+	@JsonIgnore
 	private String password;
 	private String avatar;
 	private Status status;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Account> accounts;
 	@ManyToMany
 	@JoinTable(

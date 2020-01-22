@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.security;
 
 import com.example.demo.domain.User;
 import com.example.demo.enums.Status;
@@ -13,13 +13,15 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 
-@Component
-public class CustomAuthenticationProvider implements AuthenticationProvider {
+public class NormalAuthenticationProvider implements AuthenticationProvider {
+
+	private UserService userService;
 
 	@Autowired
-	private UserService userService;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {

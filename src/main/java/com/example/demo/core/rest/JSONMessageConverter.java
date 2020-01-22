@@ -5,7 +5,6 @@ import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
-import java.util.concurrent.atomic.AtomicReference;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,7 +32,6 @@ public class JSONMessageConverter extends AbstractGenericHttpMessageConverter<Ob
 		if (!canWrite(mediaType)) {
 			return false;
 		}
-		AtomicReference<Throwable> causeRef = new AtomicReference<>();
 		if (clazz == JSONObject.class || clazz == JSONArray.class) {
 			return true;
 		}
