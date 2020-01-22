@@ -13,7 +13,6 @@ public class DemoApplication {
 		return new JSONMessageConverter();
 	}
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}

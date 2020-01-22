@@ -32,7 +32,7 @@ public class User extends BaseDomainObject {
 	private String password;
 	private String avatar;
 	private Status status;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Account> accounts;
 	@ManyToMany
 	@JoinTable(
