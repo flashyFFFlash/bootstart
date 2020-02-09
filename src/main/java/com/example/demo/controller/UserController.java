@@ -4,10 +4,14 @@ import com.example.demo.core.rest.ReturnCode;
 import com.example.demo.core.rest.ServiceResult;
 import com.example.demo.domain.User;
 import com.example.demo.dto.UserDTO;
+import com.example.demo.security.UserSessionManager;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.UserSessionUtils;
+import javax.naming.OperationNotSupportedException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/user")
+@Slf4j
 public class UserController {
 
 	private final UserService userService;
+
+	@Autowired
+	private UserSessionManager userSessionManager;
 
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -76,5 +84,15 @@ public class UserController {
 			return new ServiceResult(ReturnCode.FAILURE, "当前用户未登录");
 		}
 		return new ServiceResult(ReturnCode.SUCCESS, user);
+	}
+
+	@RequestMapping(value = "/onlineUserNum")
+	public Object onlineUserNum() {
+		try {
+			return new ServiceResult(ReturnCode.SUCCESS, this.userSessionManager.getOnlineUserNum());
+		} catch (OperationNotSupportedException e) {
+			log.error(e.getLocalizedMessage(), e);
+			return new ServiceResult(ReturnCode.FAILURE, e.getMessage());
+		}
 	}
 }

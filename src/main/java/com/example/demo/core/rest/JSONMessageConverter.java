@@ -35,7 +35,7 @@ public class JSONMessageConverter extends AbstractGenericHttpMessageConverter<Ob
 		if (clazz == JSONObject.class || clazz == JSONArray.class) {
 			return true;
 		}
-		log.warn("cant write of class {}", clazz.getName());
+		log.debug("cant write of class {}", clazz.getName());
 		return false;
 	}
 

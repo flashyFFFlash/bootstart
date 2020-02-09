@@ -10,7 +10,7 @@ public final class UserSessionUtils {
 
 	public static User currentUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication == null || !authentication.isAuthenticated()) {
+		if (authentication == null || !authentication.isAuthenticated() || "anonymousUser".equals(authentication.getPrincipal())) {
 			return null;
 		}
 		return (User) authentication.getDetails();
