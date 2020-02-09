@@ -5,6 +5,7 @@ import com.example.demo.core.rest.ServiceResult;
 import com.example.demo.domain.User;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.service.UserService;
+import com.example.demo.utils.UserSessionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,7 +55,7 @@ public class UserController {
 		return new ServiceResult(ReturnCode.SUCCESS);
 	}
 
-	@PostMapping
+	@PostMapping(value = "/updatePassword")
 	public Object updatePassword(@PathVariable String id, @RequestParam String oldPwd, @RequestParam String newPwd) {
 		User user = this.userService.findById(id);
 		if (user == null) {
@@ -66,5 +67,14 @@ public class UserController {
 		user.setPassword(newPwd);
 		this.userService.update(user);
 		return new ServiceResult(ReturnCode.SUCCESS);
+	}
+
+	@RequestMapping(value = "/info")
+	public Object info() {
+		User user = UserSessionUtils.currentUser();
+		if (user == null) {
+			return new ServiceResult(ReturnCode.FAILURE, "当前用户未登录");
+		}
+		return new ServiceResult(ReturnCode.SUCCESS, user);
 	}
 }

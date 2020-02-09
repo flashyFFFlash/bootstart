@@ -34,7 +34,9 @@ public class NormalAuthenticationProvider implements AuthenticationProvider {
 			throw new DisabledException("user " + name + " is disabled");
 		}
 		if (StringUtils.equals(user.getPassword(), authentication.getCredentials().toString())) {
-			return new UsernamePasswordAuthenticationToken(authentication.getPrincipal(), authentication.getCredentials(), Lists.newArrayList());
+			UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(authentication.getPrincipal(), authentication.getCredentials(), Lists.newArrayList());
+			usernamePasswordAuthenticationToken.setDetails(user);
+			return usernamePasswordAuthenticationToken;
 		}
 		throw new BadCredentialsException("bad credentials");
 	}
