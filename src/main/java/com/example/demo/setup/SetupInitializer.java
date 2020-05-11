@@ -1,9 +1,9 @@
 package com.example.demo.setup;
 
-import com.example.demo.domain.Role;
-import com.example.demo.domain.User;
-import com.example.demo.service.RoleService;
-import com.example.demo.service.UserService;
+import com.example.demo.usersystem.domain.Role;
+import com.example.demo.usersystem.domain.User;
+import com.example.demo.usersystem.service.RoleService;
+import com.example.demo.usersystem.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
